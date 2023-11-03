@@ -1,6 +1,6 @@
 package ua.dp.michaellang.weather.data.repository;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;

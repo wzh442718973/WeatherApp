@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import ua.dp.michaellang.weather.R;
 import ua.dp.michaellang.weather.data.entity.Forecast.DailyForecast;
 import ua.dp.michaellang.weather.data.entity.Forecast.DayNight;
@@ -41,18 +39,19 @@ public class DailyWeatherAdapter extends BaseAdapter<DailyForecast, DailyWeather
     }
 
     static class DailyWeatherViewHolder extends BaseViewHolder<DailyForecast> {
-        @BindView(R.id.item_daily_weather_day) TextView mDayTextView;
-        @BindView(R.id.item_daily_weather_date) TextView mDateTextView;
-        @BindView(R.id.item_daily_weather_image) ImageView mImageView;
-        @BindView(R.id.item_daily_weather_temperature_max) TextView mTemperatureMaxTextView;
-        @BindView(R.id.item_daily_weather_temperature_min) TextView mTemperatureMinTextView;
-        @BindView(R.id.item_daily_weather_wind) TextView mWindTextView;
-
+TextView mDayTextView;TextView mDateTextView;ImageView mImageView;TextView mTemperatureMaxTextView;TextView mTemperatureMinTextView;TextView mWindTextView;
         private AssetsUtils mAssetsUtils;
 
         public DailyWeatherViewHolder(View itemView, AssetsUtils assetsUtils) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            //tool add
+            this.mDayTextView =  itemView.findViewById(R.id.item_daily_weather_day);
+            this.mDateTextView =  itemView.findViewById(R.id.item_daily_weather_date);
+            this.mImageView =  itemView.findViewById(R.id.item_daily_weather_image);
+            this.mTemperatureMaxTextView =  itemView.findViewById(R.id.item_daily_weather_temperature_max);
+            this.mTemperatureMinTextView =  itemView.findViewById(R.id.item_daily_weather_temperature_min);
+            this.mWindTextView =  itemView.findViewById(R.id.item_daily_weather_wind);
+            //tool end
 
             mAssetsUtils = assetsUtils;
         }

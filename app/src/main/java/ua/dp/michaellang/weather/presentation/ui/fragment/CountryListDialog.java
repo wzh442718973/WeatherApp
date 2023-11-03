@@ -1,21 +1,23 @@
 package ua.dp.michaellang.weather.presentation.ui.fragment;
 
+import static java.security.AccessController.getContext;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.ProgressBar;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
@@ -27,6 +29,7 @@ import ua.dp.michaellang.weather.presentation.ui.base.BaseDialogFragment;
 import ua.dp.michaellang.weather.presentation.view.CountryListView;
 
 import javax.inject.Inject;
+
 import java.util.List;
 
 /**
@@ -40,12 +43,13 @@ public class CountryListDialog extends BaseDialogFragment
     public static final String EXTRA_COUNTRY = "ua.dp.michaellang.wether.ui.fragment.EXTRA_COUNTRY";
     public static final String EXTRA_ERROR_MESSAGE = "ua.dp.michaellang.wether.ui.fragment.EXTRA_ERROR_MESSAGE";
 
-    @BindView(R.id.dialog_country_list_progress) ProgressBar mProgressBar;
-    @BindView(R.id.dialog_country_list_recycler_view) RecyclerView mRecyclerView;
-    @BindView(R.id.dialog_country_list_search) SearchView mSearchView;
-
-    @Inject CountryListPresenter mPresenter;
-    @Inject CountryListAdapter mAdapter;
+    ProgressBar mProgressBar;
+    RecyclerView mRecyclerView;
+    SearchView mSearchView;
+    @Inject
+    CountryListPresenter mPresenter;
+    @Inject
+    CountryListAdapter mAdapter;
 
     private List<Region> mData;
 
@@ -93,7 +97,6 @@ public class CountryListDialog extends BaseDialogFragment
 
     }
 
-    @OnClick(R.id.dialog_country_list_search)
     void onSearchViewClick(SearchView searchView) {
         searchView.setIconified(false);
     }
@@ -101,7 +104,14 @@ public class CountryListDialog extends BaseDialogFragment
     @NonNull
     private View getDialogView() {
         View view = View.inflate(getContext(), R.layout.dialog_country_list, null);
-        ButterKnife.bind(this, view);
+        //tool add
+        this.mProgressBar = view.findViewById(R.id.dialog_country_list_progress);
+        this.mRecyclerView = view.findViewById(R.id.dialog_country_list_recycler_view);
+        this.mSearchView = view.findViewById(R.id.dialog_country_list_search);
+        this.mSearchView.setOnClickListener(v ->{
+            onSearchViewClick((SearchView) v);
+        });
+        //tool end
 
         mSearchView.setOnQueryTextListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

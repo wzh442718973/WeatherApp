@@ -9,7 +9,7 @@
     <string name="city_population">Population: %,d</string>
     <string name="temperature">%.1f°C</string>
     <string name="time">%tR</string>
-    <string name="humidity">%d \%</string>
+    <string name="humidity">%d %%</string>
     <string name="wind">%.1f Km\\h</string>
     <string name="day_of_week">%ta</string>
     <string name="abbreviated_date">%1$tb %1$te</string>

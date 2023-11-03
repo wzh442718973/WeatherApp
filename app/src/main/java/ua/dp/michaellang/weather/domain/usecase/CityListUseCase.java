@@ -1,7 +1,8 @@
 package ua.dp.michaellang.weather.domain.usecase;
 
-import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
+import android.util.Pair;
+
+import androidx.annotation.Nullable;
 import io.reactivex.observers.DisposableObserver;
 import ua.dp.michaellang.weather.data.entity.Forecast.HourlyForecast;
 import ua.dp.michaellang.weather.data.entity.Location.City;

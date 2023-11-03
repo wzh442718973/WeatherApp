@@ -1,6 +1,7 @@
 package ua.dp.michaellang.weather.data.network;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+
 import io.reactivex.Observable;
 import retrofit2.Response;
 import retrofit2.http.GET;

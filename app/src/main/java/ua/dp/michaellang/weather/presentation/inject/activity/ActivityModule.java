@@ -1,8 +1,9 @@
 package ua.dp.michaellang.weather.presentation.inject.activity;
 
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import dagger.Module;
 import dagger.Provides;
 

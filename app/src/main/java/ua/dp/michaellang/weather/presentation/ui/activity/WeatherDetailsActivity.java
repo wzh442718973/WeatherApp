@@ -4,19 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 import ua.dp.michaellang.weather.R;
 import ua.dp.michaellang.weather.data.entity.Forecast.DailyForecast;
@@ -34,6 +29,9 @@ import java.util.List;
 
 import static android.view.View.GONE;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 /**
  * Date: 17.09.2017
  *
@@ -43,18 +41,9 @@ public class WeatherDetailsActivity extends BaseActivity implements WeatherDetai
     public static final String EXTRA_CITY_NAME = "ua.dp.michaellang.weather.ui.activity.EXTRA_CITY_NAME";
     public static final String EXTRA_CITY_KEY = "ua.dp.michaellang.weather.ui.activity.EXTRA_CITY_KEY";
 
-    @BindView(R.id.item_temperature_image) ImageView mTemperatureIV;
-    @BindView(R.id.item_temperature_value) TextView mCurrentTempTV;
-    @BindView(R.id.item_temperature_max) TextView mTemperatureMaxTV;
-    @BindView(R.id.item_temperature_min) TextView mTemperatureMinTV;
-
-    @BindView(R.id.activity_weather_details_fb) FloatingActionButton mFloatingActionButton;
-    @BindView(R.id.content_weather_details_content_layout) View mContentLayout;
-    @BindView(R.id.content_weather_details_pb) ProgressBar mProgressBar;
-
-    @BindView(R.id.content_weather_details_hourly_info_rv) RecyclerView mHourlyRV;
-    @BindView(R.id.content_weather_details_daily_info_rv) RecyclerView mDailyRV;
-
+ImageView mTemperatureIV;TextView mCurrentTempTV;TextView mTemperatureMaxTV;TextView mTemperatureMinTV;
+FloatingActionButton mFloatingActionButton;View mContentLayout;ProgressBar mProgressBar;
+RecyclerView mHourlyRV;RecyclerView mDailyRV;
     @Inject WeatherDetailsPresenter mPresenter;
     @Inject DailyWeatherAdapter mDailyWeatherAdapter;
     @Inject HourlyWeatherAdapter mHourlyWeatherAdapter;
@@ -68,7 +57,20 @@ public class WeatherDetailsActivity extends BaseActivity implements WeatherDetai
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_details);
-        ButterKnife.bind(this);
+        //tool add
+        this.mTemperatureIV = this.findViewById(R.id.item_temperature_image);
+        this.mCurrentTempTV = this.findViewById(R.id.item_temperature_value);
+        this.mTemperatureMaxTV = this.findViewById(R.id.item_temperature_max);
+        this.mTemperatureMinTV = this.findViewById(R.id.item_temperature_min);
+        this.mFloatingActionButton = this.findViewById(R.id.activity_weather_details_fb);
+        this.mContentLayout = this.findViewById(R.id.content_weather_details_content_layout);
+        this.mProgressBar = this.findViewById(R.id.content_weather_details_pb);
+        this.mHourlyRV = this.findViewById(R.id.content_weather_details_hourly_info_rv);
+        this.mDailyRV = this.findViewById(R.id.content_weather_details_daily_info_rv);
+        this.mFloatingActionButton.setOnClickListener(v ->{
+            setFloatingActionButtonClick();
+        });
+        //tool end
 
         String cityName = getIntent().getStringExtra(EXTRA_CITY_NAME);
         mCityCode = getIntent().getStringExtra(EXTRA_CITY_KEY);
@@ -150,7 +152,6 @@ public class WeatherDetailsActivity extends BaseActivity implements WeatherDetai
         }
     }
 
-    @OnClick(R.id.activity_weather_details_fb)
     void setFloatingActionButtonClick() {
         if (mIsFavorite != null) {
             if (mIsFavorite) {

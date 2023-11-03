@@ -1,11 +1,11 @@
 package ua.dp.michaellang.weather.presentation.ui.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -20,16 +20,18 @@ public class MainActivity extends BaseActivity implements HasSupportFragmentInje
     @Inject SectionsPagerAdapter mSectionsPagerAdapter;
     @Inject DispatchingAndroidInjector<Fragment> mFragmentDispatchingAndroidInjector;
 
-    @BindView(R.id.tabs) TabLayout mTabLayout;
-    @BindView(R.id.container) ViewPager mViewPager;
-
+TabLayout mTabLayout;
+    ViewPager mViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
+        //tool add
+        this.mTabLayout = this.findViewById(R.id.tabs);
+        this.mViewPager = this.findViewById(R.id.container);
+        //tool end
 
         setToolbar(R.id.toolbar, null);
         mViewPager.setAdapter(mSectionsPagerAdapter);

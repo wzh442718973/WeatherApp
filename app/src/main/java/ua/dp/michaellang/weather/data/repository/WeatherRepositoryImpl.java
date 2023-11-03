@@ -1,8 +1,9 @@
 package ua.dp.michaellang.weather.data.repository;
 
 import android.accounts.AuthenticatorException;
-import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
+import android.util.Pair;
+
+import androidx.annotation.Nullable;
 import io.reactivex.Observable;
 import io.reactivex.functions.BiFunction;
 import retrofit2.Response;
@@ -33,7 +34,6 @@ public class WeatherRepositoryImpl implements WeatherRepository {
         mService = service;
     }
 
-    @android.support.annotation.NonNull
     private BiFunction<Response<List<HourlyForecast>>, Response<DailyForecastResponse>, CityWeather> getZipper() {
         return (response, response2) -> {
             if (response.code() == AUTH_ERROR_CODE || response2.code() == AUTH_ERROR_CODE) {
@@ -58,7 +58,7 @@ public class WeatherRepositoryImpl implements WeatherRepository {
 
     @Override
     public Observable<Pair<String, HourlyForecast>> getCurrentCitiesWeather(Iterable<String> locationKeys,
-            @Nullable String language, @Nullable Boolean details) {
+                                                                            @Nullable String language, @Nullable Boolean details) {
         //записываем все Observable в List
         List<Observable<Pair<String, HourlyForecast>>> lst = new ArrayList<>();
         for (final String locationKey : locationKeys) {

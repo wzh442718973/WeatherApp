@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import ua.dp.michaellang.weather.R;
 import ua.dp.michaellang.weather.data.entity.Forecast.HourlyForecast;
 import ua.dp.michaellang.weather.presentation.ui.base.BaseAdapter;
@@ -31,14 +29,15 @@ public class HourlyWeatherAdapter extends BaseAdapter<HourlyForecast, HourlyWeat
     }
 
     static class HourlyWeatherViewHolder extends BaseViewHolder<HourlyForecast> {
-        @BindView(R.id.item_hourly_weather_clock) TextView mClockTextView;
-        @BindView(R.id.item_hourly_weather_humidity) TextView mHumidityTextView;
-        @BindView(R.id.item_hourly_weather_temperature) TextView mTemperatureTextView;
-        @BindView(R.id.item_hourly_weather_wind) TextView mWindTextView;
-
+TextView mClockTextView;TextView mHumidityTextView;TextView mTemperatureTextView;TextView mWindTextView;
         public HourlyWeatherViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            //tool add
+            this.mClockTextView =  itemView.findViewById(R.id.item_hourly_weather_clock);
+            this.mHumidityTextView =  itemView.findViewById(R.id.item_hourly_weather_humidity);
+            this.mTemperatureTextView =  itemView.findViewById(R.id.item_hourly_weather_temperature);
+            this.mWindTextView =  itemView.findViewById(R.id.item_hourly_weather_wind);
+            //tool end
         }
 
         @Override

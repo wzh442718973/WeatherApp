@@ -2,14 +2,12 @@ package ua.dp.michaellang.weather.presentation.ui.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.util.Pair;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import ua.dp.michaellang.weather.R;
 import ua.dp.michaellang.weather.data.entity.Forecast.HourlyForecast;
 import ua.dp.michaellang.weather.data.entity.Location.City;
@@ -71,14 +69,15 @@ public class CityListAdapter extends BaseAdapter<City, CityListAdapter.CityViewH
     public static class CityViewHolder extends BaseViewHolder<City> {
         private AssetsUtils mAssetsUtils;
 
-        @BindView(R.id.item_city_name_tv) TextView mNameTextView;
-        @BindView(R.id.item_city_population_tv) TextView mPopulationTextView;
-        @BindView(R.id.item_city_temperature) TextView mTemperatureTextView;
-        @BindView(R.id.item_city_image) ImageView mImageView;
-
+TextView mNameTextView;TextView mPopulationTextView;TextView mTemperatureTextView;ImageView mImageView;
         public CityViewHolder(View itemView, AssetsUtils assetsUtils) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            //tool add
+            this.mNameTextView =  itemView.findViewById(R.id.item_city_name_tv);
+            this.mPopulationTextView =  itemView.findViewById(R.id.item_city_population_tv);
+            this.mTemperatureTextView =  itemView.findViewById(R.id.item_city_temperature);
+            this.mImageView =  itemView.findViewById(R.id.item_city_image);
+            //tool end
             mAssetsUtils = assetsUtils;
         }
 

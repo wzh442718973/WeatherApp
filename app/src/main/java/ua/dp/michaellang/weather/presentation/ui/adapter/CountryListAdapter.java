@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.reactivex.functions.Consumer;
 import io.reactivex.subjects.PublishSubject;
 import ua.dp.michaellang.weather.R;
@@ -46,15 +44,16 @@ public class CountryListAdapter extends BaseAdapter<Region, CountryListAdapter.C
     }
 
     public static class CountryViewHolder extends BaseViewHolder<Region> {
-        @BindView(R.id.item_country_title) TextView mTextView;
-        @BindView(R.id.item_country_image) ImageView mImageView;
-
+TextView mTextView;ImageView mImageView;
         private final PublishSubject<Region> mPublishSubject = PublishSubject.create();
         private final AssetsUtils mAssetsUtils;
 
         public CountryViewHolder(View itemView, Consumer<Region> consumer, AssetsUtils assetsUtils) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            //tool add
+            this.mTextView =  itemView.findViewById(R.id.item_country_title);
+            this.mImageView =  itemView.findViewById(R.id.item_country_image);
+            //tool end
 
             mPublishSubject.subscribe(consumer);
             mAssetsUtils = assetsUtils;

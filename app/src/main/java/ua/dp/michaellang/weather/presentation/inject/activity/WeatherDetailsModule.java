@@ -1,7 +1,6 @@
 package ua.dp.michaellang.weather.presentation.inject.activity;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import dagger.Module;
 import dagger.Provides;
 import ua.dp.michaellang.weather.data.repository.LocationRepository;
@@ -19,6 +18,8 @@ import ua.dp.michaellang.weather.presentation.view.WeatherDetailsView;
 import javax.inject.Named;
 
 import static ua.dp.michaellang.weather.Contants.ACTIVITY_CONTEXT;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Date: 25.09.2017

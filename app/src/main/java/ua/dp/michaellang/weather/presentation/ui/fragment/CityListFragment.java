@@ -2,20 +2,19 @@ package ua.dp.michaellang.weather.presentation.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.util.Pair;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.widget.SearchView;
+import android.util.Pair;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import dagger.android.support.AndroidSupportInjection;
 import timber.log.Timber;
 import ua.dp.michaellang.weather.R;
@@ -41,10 +40,7 @@ public class CityListFragment extends BaseFragment
     @Inject CityListAdapter mAdapter;
     @Inject CityListPresenter mPresenter;
 
-    @BindView(R.id.fragment_city_list_search_view) SearchView mSearchView;
-    @BindView(R.id.fragment_city_list_recycler_view) RecyclerView mRecyclerView;
-    @BindView(R.id.fragment_city_list_progress_bar) ProgressBar mProgressBar;
-
+SearchView mSearchView;RecyclerView mRecyclerView;ProgressBar mProgressBar;
     private String mCountryId;
 
     @Override
@@ -72,7 +68,14 @@ public class CityListFragment extends BaseFragment
     public View onCreateView(LayoutInflater inflater,
             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_city_list, container, false);
-        ButterKnife.bind(this, view);
+        //tool add
+        this.mSearchView =  view.findViewById(R.id.fragment_city_list_search_view);
+        this.mRecyclerView =  view.findViewById(R.id.fragment_city_list_recycler_view);
+        this.mProgressBar =  view.findViewById(R.id.fragment_city_list_progress_bar);
+        this.mSearchView.setOnClickListener(v ->{
+            onSearchViewClick();
+        });
+        //tool end
         return view;
     }
 
@@ -85,7 +88,6 @@ public class CityListFragment extends BaseFragment
         mPresenter.loadCityList(mCountryId);
     }
 
-    @OnClick(R.id.fragment_city_list_search_view)
     void onSearchViewClick() {
         mSearchView.setIconified(false);
     }

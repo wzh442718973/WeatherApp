@@ -1,8 +1,9 @@
 package ua.dp.michaellang.weather.presentation.ui.base;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Date: 14.09.2017

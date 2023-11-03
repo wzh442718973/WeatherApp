@@ -1,8 +1,8 @@
 package ua.dp.michaellang.weather.presentation.inject.activity;
 
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
+//import androidx.fragment.app.FragmentManager;
+//import androidx.appcompat.app.AppCompatActivity;
 import dagger.Module;
 import dagger.Provides;
 import ua.dp.michaellang.weather.presentation.inject.fragment.CityListFragmentSubcomponent;
@@ -14,6 +14,9 @@ import ua.dp.michaellang.weather.presentation.ui.adapter.SectionsPagerAdapter;
 import javax.inject.Named;
 
 import static ua.dp.michaellang.weather.Contants.ACTIVITY_CONTEXT;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * Date: 24.09.2017
@@ -31,7 +34,8 @@ public class MainActivityModule {
         return new SectionsPagerAdapter(context, fm);
     }
 
-    @Provides AppCompatActivity provideAppCompatActivity(MainActivity activity){
+    @Provides
+    AppCompatActivity provideAppCompatActivity(MainActivity activity){
         return activity;
     }
 }

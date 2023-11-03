@@ -1,6 +1,6 @@
 package ua.dp.michaellang.weather.domain.usecase;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;

@@ -1,7 +1,8 @@
 package ua.dp.michaellang.weather.domain.interactor;
 
-import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
+import android.util.Pair;
+
+import androidx.annotation.Nullable;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-    <android.support.design.widget.AppBarLayout
+
+
+    <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             android:theme="@style/AppTheme.AppBarTransparent">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/appbar_collapsing_height"
@@ -25,7 +27,7 @@
                 app:expandedTitleMarginStart="@dimen/appbar_collapsing_title_margin_start"
                 app:expandedTitleTextAppearance="@style/AppTheme.HeaderTitleStyle">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -39,7 +41,7 @@
                     android:layout_gravity="bottom"
                     android:background="@drawable/scrim"/>
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
@@ -47,11 +49,11 @@
                     app:layout_collapseMode="pin"
                     app:layout_scrollFlags="scroll|enterAlways"/>
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
             android:id="@+id/container"
             android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -59,10 +61,10 @@
             android:layout_height="match_parent">
 
         <include layout="@layout/content_weather_details"/>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/activity_weather_details_fb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,4 +76,4 @@
             app:rippleColor="@color/color_ripple"
             app:srcCompat="@drawable/ic_add_favorite"/>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

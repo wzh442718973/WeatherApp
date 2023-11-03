@@ -1,8 +1,8 @@
 package ua.dp.michaellang.weather.presentation.ui.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * Date: 25.09.2017

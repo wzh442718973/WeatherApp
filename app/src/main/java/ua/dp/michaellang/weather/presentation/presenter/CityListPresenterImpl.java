@@ -1,7 +1,7 @@
 package ua.dp.michaellang.weather.presentation.presenter;
 
 import android.accounts.AuthenticatorException;
-import android.support.v4.util.Pair;
+import android.util.Pair;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;

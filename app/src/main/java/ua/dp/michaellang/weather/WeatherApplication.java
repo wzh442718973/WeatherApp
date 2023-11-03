@@ -2,7 +2,6 @@ package ua.dp.michaellang.weather;
 
 import android.app.Activity;
 import android.app.Application;
-import com.squareup.leakcanary.LeakCanary;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import io.realm.Realm;
@@ -44,12 +43,7 @@ public class WeatherApplication extends Application implements HasActivityInject
     }
 
     private void initializeLeakDetection() {
-        if (BuildConfig.DEBUG) {
-            if (LeakCanary.isInAnalyzerProcess(this)) {
-                return;
-            }
-            LeakCanary.install(this);
-        }
+
     }
 
     @Override

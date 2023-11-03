@@ -1,6 +1,7 @@
 package ua.dp.michaellang.weather.presentation.view;
 
-import android.support.annotation.StringRes;
+
+import androidx.annotation.StringRes;
 
 /**
  * Date: 14.09.2017

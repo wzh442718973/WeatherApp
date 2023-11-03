@@ -4,18 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.FragmentManager;
+//import android.support.annotation.StringRes;
+//import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import dagger.android.support.AndroidSupportInjection;
 import timber.log.Timber;
 import ua.dp.michaellang.weather.R;
@@ -26,6 +24,8 @@ import ua.dp.michaellang.weather.presentation.utils.AssetsUtils;
 import javax.inject.Inject;
 
 import static android.app.Activity.RESULT_OK;
+
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * Date: 16.09.2017
@@ -38,10 +38,7 @@ public class SearchByCountryFragment extends BaseFragment {
 
     private static final String KEY_COUNTRY = "KEY_COUNTRY";
 
-    @BindView(R.id.fragment_search_by_country_content) View mContentView;
-    @BindView(R.id.fragment_search_by_country_button) Button mButton;
-    @BindView(R.id.fragment_search_by_country_image) ImageView mImageView;
-
+View mContentView;Button mButton;ImageView mImageView;
     @Inject AssetsUtils mAssetsUtils;
 
     private CountryListDialog mCountryListDialog;
@@ -71,12 +68,18 @@ public class SearchByCountryFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater,
             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_by_country, container, false);
-        ButterKnife.bind(this, view);
+        //tool add
+        this.mContentView =  view.findViewById(R.id.fragment_search_by_country_content);
+        this.mButton =  view.findViewById(R.id.fragment_search_by_country_button);
+        this.mImageView =  view.findViewById(R.id.fragment_search_by_country_image);
+        this.mButton.setOnClickListener(v ->{
+            onSearchByCountryButtonClick();
+        });
+        //tool end
         updateUI();
         return view;
     }
 
-    @OnClick(R.id.fragment_search_by_country_button)
     public void onSearchByCountryButtonClick() {
         if (mCountryListDialog != null && mCountryListDialog.isVisible()) {
             return;

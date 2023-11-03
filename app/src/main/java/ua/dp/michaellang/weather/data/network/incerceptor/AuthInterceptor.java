@@ -1,6 +1,7 @@
 package ua.dp.michaellang.weather.data.network.incerceptor;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
